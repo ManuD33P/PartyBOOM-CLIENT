@@ -1,15 +1,16 @@
-import React from "react"
+import {type FormEvent}  from "react"
+
 type Props = {
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+    onSubmit: (event: FormEvent<HTMLFormElement>) => void
+    className?: string;
 }
 
-export function FormPreferents({onSubmit}: Props){
+export function FormPreferents({onSubmit,className}: Props){
 
     return(
-        <form onSubmit={onSubmit}>
-            <label>Nick Name:</label>
-            <input id="nick" type="text" />
-            <button type="submit">Ingresar</button>
+        <form className={className} onSubmit={onSubmit}>
+            <input name="name" type="text" placeholder="Ingresar nick"/>
+            <button type="submit">Guardar</button>
         </form>
     )
 }

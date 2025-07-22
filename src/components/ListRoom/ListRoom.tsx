@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react"
 import { useSocket } from "../../context/SocketContext"
-
+import Style from "./listRoom.module.css";
 
 export function ListRoom(){
-    const [listRoom, setListRoom] = useState<any>([]);
+    const [listRoom, setListRoom] = useState<[]>([]);
     const socket = useSocket();
 
     useEffect(()=>{
             socket?.on("room-list",(data:any)=>{
-                console.log(`recibio list rooms: ${data}`)
+                console.log('recibio listRoom:',data)
                 setListRoom(data)
             });
+
+            return ()=> {
+                socket?.off('room-list')
+            }
     },[socket])
 
 
+    if(!listRoom.length){
+        return (
+            <section className={Style.content}>
+                <p>No hay salas abiertas</p>
+            </section>
+        );
+    }
+    
     return(
-        <>
-            {listRoom.map((room:any)=> 
-                <div key={room.config.idRoom}>
+        <section className={Style.conent}>
+            {
+            listRoom.map((room:any)=> 
+                <article key={room.config.idRoom}>
                     {JSON.stringify(room)}
-                </div>
-            )}
-        </>
+                </article>)
+            }
+        </section>
     )
 }
