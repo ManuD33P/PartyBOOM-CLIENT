@@ -1,12 +1,4 @@
-.roomList {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-  }
-  
-  .roomCard {
+.roomCard {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(168, 85, 247, 0.1);
     border-radius: 8px;

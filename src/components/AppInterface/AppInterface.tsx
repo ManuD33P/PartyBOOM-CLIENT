@@ -1,24 +1,33 @@
 import { ListRoom } from '../ListRoom/ListRoom';
+import { ContentCard } from '../ListRoom/contentListRoom';
 import { ListUser } from '../ListUser/ListUser';
 import { Controls } from '../Controls/Controls';
-import Style from './appInterface.module.css';
+import { FooterCard } from '../Footer/Footer';
+import styles from './appInterface.module.css';
+import { PersonalDataCard } from '../PersonalData/PersonalData';
 
 export function AppInterface(){
 
 
 return(
-    <main className={Style.contentApp}>
-        <div className={Style.header}>
-            <Controls />
-        </div>
-        <div className={Style.personalData}>PERSONAL DATA</div>
-        <div className={Style.listUser}>
-            <ListUser />
-        </div>
-        <div className={Style.content}>
-            <ListRoom />
-        </div>
-        <div className={Style.footer}>FOOTER</div>
-    </main>
+    <main className={styles.contentApp}>
+    <div className={styles.header}>
+       <Controls/>
+    </div>
+    <div className={styles.personalData}>
+        <PersonalDataCard/>
+    </div>
+    <div className={styles.listUser}>
+        <ListUser />
+    </div>
+    <div className={styles.content}>
+        <ContentCard>
+            <ListRoom/>
+        </ContentCard>
+    </div>
+    <div className={styles.footer}>
+           <FooterCard />
+    </div>
+  </main>
 )
 }

@@ -1,0 +1,15 @@
+.card {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 16px;
+    height: 100%;
+  }
+  
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #c084fc;
+  }

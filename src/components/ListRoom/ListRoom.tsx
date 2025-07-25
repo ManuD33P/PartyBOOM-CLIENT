@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react"
 import { useSocket } from "../../context/SocketContext"
 import Style from "./listRoom.module.css";
+import { RoomCard } from "./Card";
+import { EVENT_EMIT } from "../../const/EVENT_EMIT";
 
 export function ListRoom(){
     const [listRoom, setListRoom] = useState<[]>([]);
     const socket = useSocket();
 
     useEffect(()=>{
-            socket?.on("room-list",(data:any)=>{
+
+        if(socket?.connected){
+            socket.emit(EVENT_EMIT.ROOM_LIST)
+            socket?.on(EVENT_EMIT.ROOM_LIST,(data:any)=>{
                 console.log('recibio listRoom:',data)
                 setListRoom(data)
             });
+        }
 
             return ()=> {
                 socket?.off('room-list')
@@ -30,9 +36,8 @@ export function ListRoom(){
         <section className={Style.conent}>
             {
             listRoom.map((room:any)=> 
-                <article key={room.config.idRoom}>
-                    {JSON.stringify(room)}
-                </article>)
+                <RoomCard key={room.idRoom} room={room} />
+                )
             }
         </section>
     )

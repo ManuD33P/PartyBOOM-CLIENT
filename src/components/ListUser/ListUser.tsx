@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSocket } from "../../context/SocketContext";
 import { EVENT_EMIT } from "../../const/EVENT_EMIT";
+import {UserItem}  from "./Card";
+import styles from "./user-list.module.css"
 interface IUsers{
     id: string,
     name: string
@@ -17,26 +19,24 @@ export function ListUser(){
         }
         
         if(socket?.connected){
+            socket.emit(EVENT_EMIT.LIST_USERS)
             socket.on(EVENT_EMIT.LIST_USERS, onListUser);
         }
 
         return ()=>{
             socket?.off(EVENT_EMIT.LIST_USERS);
         }
-    },[socket?.connected]);
+    },[socket]);
 
-
-    if(!users.length) return "No hay usuarios en linea";
 
     return(
-        <section>
+        <section className={styles.card}>
+         <h2 className={styles.title}>Jugadores Online</h2>
             {
                 users.map((u)=>(
-                    <article id={u.id} key={u.id}>
-                        <p>{u.name}</p>
-                    </article>
+                    <UserItem key={u.id} user={u} />
                 ))
             }
-        </section>
+        </section>  
     )
 }

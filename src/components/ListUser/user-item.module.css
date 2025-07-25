@@ -1,0 +1,93 @@
+.userItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .userItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .userAvatar {
+    position: relative;
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #a855f7, #3b82f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .statusDot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #374151;
+  }
+  
+  .online {
+    background: #4ade80;
+  }
+  
+  .playing {
+    background: #fbbf24;
+  }
+  
+  .away {
+    background: #9ca3af;
+  }
+  
+  .userInfo {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .userName {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .userName span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .crownIcon {
+    width: 12px;
+    height: 12px;
+    color: #fbbf24;
+    flex-shrink: 0;
+  }
+  
+  .userLevel {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #9ca3af;
+  }
+  
+  .gameIcon {
+    width: 12px;
+    height: 12px;
+  }
+  

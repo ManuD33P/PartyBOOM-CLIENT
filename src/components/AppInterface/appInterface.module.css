@@ -1,47 +1,71 @@
 .contentApp {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    color: white;
     display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    gap: 8px;
-    border: 1px solid white;
-    overflow:hidden;
-    box-sizing: content-box;
-}
-    
-.header {
-    grid-column: span 4 / span 4;
-    border: 1px solid white;
-}
-
-.personalData {
-    grid-column: span 2 / span 2;
-    grid-column-start: 5;
-    border: 1px solid white;
-}
-
-.listUser {
-    grid-column: span 2 / span 2;
-    grid-row: span 9 / span 9;
-    grid-column-start: 5;
-    grid-row-start: 2;
-    border: 1px solid white;
-
-}
-
-.content {
-    grid-column: span 4 / span 4;
-    grid-row: span 8 / span 8;
-    grid-column-start: 1;
-    grid-row-start: 2;
-    border: 1px solid white;
-
-}
-
-.footer {
-    grid-column: span 4 / span 4;
-    grid-row-start: 10;
-    border: 1px solid white;
-
-}
+    grid-template-columns: 250px 200px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-areas:
+      "header header header"
+      "personalData listUser content"
+      "footer footer footer";
+    gap: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  
+  .header {
+    grid-area: header;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  
+  .personalData {
+    grid-area: personalData;
+  }
+  
+  .listUser {
+    grid-area: listUser;
+  }
+  
+  .content {
+    grid-area: content;
+  }
+  
+  .footer {
+    grid-area: footer;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .contentApp {
+      grid-template-columns: 1fr;
+      grid-template-rows: 80px auto auto 1fr 60px;
+      grid-template-areas:
+        "header"
+        "personalData"
+        "listUser"
+        "content"
+        "footer";
+      position: relative;
+      min-height: 100vh;
+      height: auto;
+      overflow: visible;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contentApp {
+      padding: 8px;
+      gap: 8px;
+    }
+  }
+  
